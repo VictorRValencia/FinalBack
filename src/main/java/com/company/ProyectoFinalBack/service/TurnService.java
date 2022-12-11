@@ -1,9 +1,9 @@
 package com.company.ProyectoFinalBack.service;
 
-import com.compnay.proyectFinal.exceptions.BadRequestException;
-import com.compnay.proyectFinal.exceptions.ResourceNotFoundException;
-import com.compnay.proyectFinal.model.Turn;
-import com.compnay.proyectFinal.repository.TurnRepository;
+import com.company.ProyectoFinalBack.exceptions.BadRequestException;
+import com.company.ProyectoFinalBack.exceptions.ResourceNotFoundException;
+import com.company.ProyectoFinalBack.model.Turn;
+import com.company.ProyectoFinalBack.repository.TurnRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

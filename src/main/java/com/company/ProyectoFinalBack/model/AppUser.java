@@ -1,5 +1,7 @@
 package com.company.ProyectoFinalBack.model;
 
+import com.company.ProyectoFinalBack.model.AppUserRol;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,13 +13,15 @@ import java.util.Collections;
 @Entity
 public class AppUser implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
+    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     private Long id;
+
     private String name;
     private String username;
     private String email;
     private String password;
+
     @Enumerated(EnumType.STRING)
     private AppUserRol appUserRol;
 
@@ -36,56 +40,12 @@ public class AppUser implements UserDetails {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public AppUserRol getAppUserRol() {
-        return appUserRol;
-    }
-
-    public void setAppUserRol(AppUserRol appUserRol) {
-        this.appUserRol = appUserRol;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(appUserRol.name());
-        return Collections.singletonList(grantedAuthority);
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
@@ -106,5 +66,43 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(appUserRol.name());
+        return Collections.singletonList(grantedAuthority);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public AppUserRol getAppUserRol() {
+        return appUserRol;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAppUserRol(AppUserRol appUserRol) {
+        this.appUserRol = appUserRol;
     }
 }

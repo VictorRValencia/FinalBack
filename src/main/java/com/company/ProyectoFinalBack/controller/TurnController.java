@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/turn")
+@RequestMapping("/api/turn")
 public class TurnController {
 
     @Autowired

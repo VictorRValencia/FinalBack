@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/patient")
+@RequestMapping("/api/patient")
 public class PatientController {
 
     @Autowired

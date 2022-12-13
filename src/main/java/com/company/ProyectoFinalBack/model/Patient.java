@@ -3,6 +3,7 @@ package com.company.ProyectoFinalBack.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 import java.util.Date;
@@ -15,6 +16,7 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
+    @NotNull
     private Integer id;
 
     @Column
